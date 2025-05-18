@@ -9,7 +9,7 @@ function SearchForm({ filters, onInputChange, onSearch }) {
 
     // Opciones para los selects de Ki 
     const kiOptions = [
-        { value: '', label: 'Seleccione' },
+        { value: '', label: 'Select' },
         { value: '0', label: '0' },
         { value: '1000000', label: '1,000,000' },
         { value: '10000000', label: '10,000,000' },
