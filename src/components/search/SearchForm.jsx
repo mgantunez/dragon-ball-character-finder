@@ -10,13 +10,13 @@ function SearchForm({ filters, onInputChange, onSearch }) {
     // Opciones para los selects de Ki 
     const kiOptions = [
         { value: '0', label: '0' },
-        { value: '1000000', label: '1,000,000' },
-        { value: '10000000', label: '10,000,000' },
-        { value: '20000000', label: '20,000,000' },
-        { value: '40000000', label: '40,000,000' },
-        { value: '60000000', label: '60,000,000' },
-        { value: '80000000', label: '80,000,000' },
-        { value: '100000000', label: '100,000,000' },
+        { value: '1000000', label: '1.000.000' },
+        { value: '10000000', label: '10.000.000' },
+        { value: '20000000', label: '20.000.000' },
+        { value: '40000000', label: '40.000.000' },
+        { value: '60000000', label: '60.000.000' },
+        { value: '80000000', label: '80.000.000' },
+        { value: '100000000', label: '100.000.000' },
     ];
 
     // Deshabilitar botón si no hay filtros aplicados

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Header from './layout/Header';
 import SearchForm from './search/SearchForm';
@@ -20,6 +20,7 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [hasSearched, setHasSearched] = useState(false);
 
   const onInputChange = (event) => {
     const { name, value } = event.target;
@@ -31,19 +32,21 @@ function App() {
 
   const onSearch = () => {
 
+    const kiMinNum = Number(filters.kiMin);
+    const kiMaxNum = Number(filters.kiMax);
+
+    // Validación: evita buscar si el rango de Ki es incorrecto
+    if (kiMinNum > kiMaxNum) {
+      setError('Invalid Ki range: Minimum Ki cannot be greater than Maximum Ki.');
+      setCharacters([]);
+      return;
+    }
+
     let url = baseApiUrl;
-    const params = [];
-
-    if (filters.name) {
-      params.push(`name=${encodeURIComponent(filters.name)}`);
-    }
-
-    if (params.length > 0) {
-      url += `?&${params.join('&')}`;
-    }
 
     setLoading(true);
     setError(null);
+    setHasSearched(true);
 
     fetch(url)
       .then((res) => {
@@ -51,11 +54,12 @@ function App() {
         return res.json();
       })
       .then((data) => {
+        const charactersArray = data.items || [];
         // Aquí filtro por rango de ki
-        const filtered = data.filter((char) => {
+        const filtered = charactersArray.filter((char) => {
           const nameMatch = char.name.toLowerCase().includes(filters.name.toLowerCase());
           const ki = Number(char.ki) || 0;
-          const kiMatch = ki >= Number(filters.kiMin) && ki <= Number(filters.kiMax);
+          const kiMatch = ki >= kiMinNum && ki <= kiMaxNum;
           return nameMatch && kiMatch;
         });
         setCharacters(filtered);
@@ -83,16 +87,22 @@ function App() {
         />
 
         {loading && <p>Loading characters...</p>}
-        {error && <p className="error">{error}</p>}
-
-        {!loading && !error && (
+        {!loading && hasSearched && (
           <>
-            {characters.length === 0 ? (
-              <h3 className="characterList__title"> No results found.</h3>
-            ) : (
-              <h3 className="characterList__title">{characters.length} result{characters.length > 1 ? 's' : ''} found:</h3>
-            )}
-            <CharacterList characters={characters} />
+            {error
+              ? (
+                <h3 className="characterList__title">{error}</h3>
+              )
+              : characters.length === 0
+                ?
+                (
+                  <h3 className="characterList__title">No results found.</h3>
+                ) : (
+                  <>
+                    <h3 className="characterList__title">{characters.length} result{characters.length > 1 ? 's' : ''} found:</h3>
+                    <CharacterList characters={characters} />
+                  </>
+                )}
           </>
         )}
       </main>
