@@ -12,7 +12,7 @@ function CharacterCard({ character }) {
         <div className="characterCard">
             <div className="characterCard__header" onClick={toggleDetails} role="button">
                 <span className="characterCard__name">{character.name}</span>
-                <span className="characterCard__ki">Ki: {character.ki}</span>
+                <span className="characterCard__ki">{character.ki}</span>
                 <FontAwesomeIcon
                     icon={showDetails ? faCaretUp : faCaretDown}
                     className="characterCard__caret"
