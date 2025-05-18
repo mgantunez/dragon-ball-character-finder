@@ -1,22 +1,51 @@
+@use '../core/variables' as *;
+
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100vw;
     padding: 1rem 2rem;
-    background-color: #fcbc24;
+    background-color: $color_primary;
 
     &__title {
         color: black;
         font-size: 2.5rem;
-        margin-left: 1rem;
         margin-top: 0;
+
+        @include tablet {
+            color: black;
+            font-size: 2.5rem;
+            margin-left: 1rem;
+            margin-top: 0;
+        }
+
+        @include desktop {
+            color: black;
+            font-size: 2.5rem;
+            margin-left: 1rem;
+            margin-top: 0;
+        }
 
     }
 
     &__image {
-        width: 15rem;
+        width: 10rem;
         height: auto;
         margin-right: 1rem;
+
+        @include tablet {
+            width: 15rem;
+
+        }
+
+        @include desktop {
+            width: 15rem;
+        }
+
     }
+
+
+
+
 }

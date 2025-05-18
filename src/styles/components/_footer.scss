@@ -1,5 +1,7 @@
+@use '../core/variables' as *;
+
 .footer {
-    background-color: #fcbc24;
+    background-color: $color_primary;
     padding: 40px 0;
     text-align: center;
     margin-top: 100px;
