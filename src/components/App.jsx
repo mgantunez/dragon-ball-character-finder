@@ -85,7 +85,16 @@ function App() {
         {loading && <p>Loading characters...</p>}
         {error && <p className="error">{error}</p>}
 
-        {!loading && !error && <CharacterList characters={characters} />}
+        {!loading && !error && (
+          <>
+            {characters.length === 0 ? (
+              <h3>No results found.</h3>
+            ) : (
+              <h3>{characters.length} result{characters.length > 1 ? 's' : ''} found</h3>
+            )}
+            <CharacterList characters={characters} />
+          </>
+        )}
       </main>
 
       <Footer />

@@ -1,0 +1,60 @@
+.characterCard {
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        user-select: none;
+        padding: 0.5rem 0;
+        gap: 0.5rem;
+
+        .characterCard__name {
+            flex: 1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #222;
+            margin-left: 5rem;
+        }
+
+        .characterCard__ki {
+            min-width: 60px;
+            text-align: right;
+            color: #555;
+            font-weight: 500;
+            margin-right: 5rem;
+        }
+
+        .characterCard__caret {
+            color: black;
+            font-size: 1.2rem;
+            margin-right: 2rem;
+
+            &:hover {
+                color: black;
+            }
+        }
+    }
+
+    &__details {
+        margin-top: 0.8rem;
+        padding-left: 1rem;
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        font-size: 0.95rem;
+        color: #444;
+    }
+
+    &__image {
+        width: 100px;
+        height: auto;
+        border-radius: 4px;
+        object-fit: cover;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    &__description {
+        flex: 1;
+        line-height: 1.4;
+    }
+}

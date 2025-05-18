@@ -1,17 +1,13 @@
 import PropTypes from 'prop-types';
+import CharacterCard from './CharacterCard';
 
 function CharacterList({ characters }) {
-    if (!characters.length) {
-        return <p>No characters found.</p>;
-    }
 
     return (
-        <ul className="character-list">
+        <ul className="characterList">
             {characters.map((char) => (
                 <li key={char.id || char.name}>
-                    <h3>{char.name}</h3>
-                    <p>Ki: {char.ki}</p>
-
+                    <CharacterCard character={char} />
                 </li>
             ))}
         </ul>
@@ -19,9 +15,16 @@ function CharacterList({ characters }) {
 }
 
 CharacterList.propTypes = {
-    characters: PropTypes.array.isRequired,
+    characters: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+            name: PropTypes.string.isRequired,
+            ki: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+            image: PropTypes.string,
+            description: PropTypes.string,
+        })
+    ).isRequired,
 };
-
 export default CharacterList;
 
 
