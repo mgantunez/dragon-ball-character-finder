@@ -1,13 +1,13 @@
 # 🐉 Dragon Ball Character Finder
 
-Una aplicación React que permite buscar personajes de Dragon Ball por nombre y rango de poder (Ki) utilizando la API pública [dragonball-api.com](https://dragonball-api.com/).
+Una aplicación React que permite buscar personajes de Dragon Ball por nombre y rango de poder (Ki) utilizando la API pública [dragonball-api.com](https://web.dragonball-api.com/documentation).
 
 ## 🛠️ Tecnologías utilizadas
 
 - React
 - Sass
 - Font Awesome
-- [Dragon Ball API](https://dragonball-api.com/)
+- [Dragon Ball API](https://web.dragonball-api.com/documentation)
 
 ## 🚀 Características
 
