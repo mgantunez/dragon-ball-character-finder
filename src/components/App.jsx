@@ -13,8 +13,8 @@ function App() {
 
   const [filters, setFilters] = useState({
     name: '',
-    kiMin: '0',
-    kiMax: '100000000000',
+    kiMin: 'Select',
+    kiMax: 'Select',
   });
 
   const [characters, setCharacters] = useState([]);
@@ -32,6 +32,15 @@ function App() {
 
   const onSearch = () => {
 
+    setHasSearched(true);
+
+    // Validación: Ambos select deben tener valor válido
+    if (filters.kiMin === 'Select' || filters.kiMax === 'Select') {
+      setError('Please select both Ki Min and Ki Max values.');
+      setCharacters([]);
+      return;
+    }
+
     const kiMinNum = Number(filters.kiMin);
     const kiMaxNum = Number(filters.kiMax);
 
@@ -46,28 +55,40 @@ function App() {
 
     setLoading(true);
     setError(null);
-    setHasSearched(true);
 
     fetch(url)
+
       .then((res) => {
         if (!res.ok) throw new Error('Error in API response');
         return res.json();
       })
+
       .then((data) => {
         const charactersArray = data.items || [];
-        // Aquí filtro por rango de ki
+        // Aquí filtro por nombre y rango de ki
         const filtered = charactersArray.filter((char) => {
           const nameMatch = char.name.toLowerCase().includes(filters.name.toLowerCase());
-          const ki = Number(char.ki) || 0;
+
+          // Convierte Ki a número y quita los puntos
+          const ki = Number(char.ki.replace(/\./g, ''));
+
+          // Si ki no es un número válido, se descarta el personaje
+          if (isNaN(ki)) return false;
+
+          // Filtro entre ki min y ki max
           const kiMatch = ki >= kiMinNum && ki <= kiMaxNum;
+
           return nameMatch && kiMatch;
         });
+
         setCharacters(filtered);
       })
+
       .catch((err) => {
         setError(err.message);
         setCharacters([]); // limpia lista si hay error
       })
+
       .finally(() => {
         setLoading(false);
       });
@@ -99,7 +120,8 @@ function App() {
                   <h3 className="characterList__title">No results found.</h3>
                 ) : (
                   <>
-                    <h3 className="characterList__title">{characters.length} result{characters.length > 1 ? 's' : ''} found:</h3>
+                    <h3 className="characterList__title">
+                      {characters.length} result{characters.length > 1 ? 's' : ''} found:</h3>
                     <CharacterList characters={characters} />
                   </>
                 )}
