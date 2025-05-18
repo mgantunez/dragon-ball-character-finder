@@ -1,9 +1,19 @@
+import Header from './layout/Header';
+import Footer from './layout/Footer';
+
 import '../styles/App.scss';
+
 
 function App() {
   return (
+
     <div>
-      Escribe aquí tu HTML...
+      <Header />
+
+      <main>
+      </main>
+
+      <Footer />
     </div>
   )
 }
