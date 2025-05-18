@@ -25,6 +25,7 @@ Una aplicación React que permite buscar personajes de Dragon Ball por nombre y 
 
 ## 📁 Estructura del proyecto
 
+```
 src/
 ├── characters/
 │ └── CharacterCard.jsx
@@ -40,6 +41,7 @@ src/
 │ └── components/
 ├── App.jsx
 └── main.jsx
+```
 
 ## ⚙️ Instalación y ejecución local
 
