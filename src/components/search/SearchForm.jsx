@@ -9,7 +9,6 @@ function SearchForm({ filters, onInputChange, onSearch }) {
 
     // Opciones para los selects de Ki 
     const kiOptions = [
-        { value: '', label: 'Select' },
         { value: '0', label: '0' },
         { value: '1000000', label: '1,000,000' },
         { value: '10000000', label: '10,000,000' },
@@ -19,6 +18,10 @@ function SearchForm({ filters, onInputChange, onSearch }) {
         { value: '80000000', label: '80,000,000' },
         { value: '100000000', label: '100,000,000' },
     ];
+
+    // Deshabilitar botón si no hay filtros aplicados
+    const isButtonDisabled = !filters.name.trim() && filters.kiMin === '0' && filters.kiMax === '100000000000';
+
 
     return (
 
@@ -70,7 +73,10 @@ function SearchForm({ filters, onInputChange, onSearch }) {
                     ))}
                 </select>
 
-                <button type="submit" className="searchForm__button">
+                <button
+                    type="submit"
+                    className="searchForm__button"
+                    disabled={isButtonDisabled}>
                     Search
                 </button>
             </div>

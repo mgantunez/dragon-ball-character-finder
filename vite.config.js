@@ -5,9 +5,13 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    open: "/index.html",
-    watch: {
-      usePolling: true
-    }
+    proxy: {
+      '/api': {
+        target: 'https:/dragonball-api.com',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
   },
 })
