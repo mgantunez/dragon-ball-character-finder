@@ -7,7 +7,7 @@ import Footer from './layout/Footer';
 
 import '../styles/App.scss';
 
-const baseApiUrl = 'https://dragonball-api.com/api/characters';
+const baseApiUrl = 'https://dragonball-api.com/api/characters?limit=58';
 
 function App() {
 
