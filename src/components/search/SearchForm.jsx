@@ -29,18 +29,18 @@ function SearchForm({ filters, onInputChange, onSearch }) {
 
 
                 {/* Nombre del personaje */}
-                <label htmlFor="name">Search by name</label>
+                <label className="searchForm__label" htmlFor="name">Search by name</label>
                 <input
                     className="searchForm__input"
                     type="text"
                     name="name"
-                    placeholder="Buscar por nombre"
+                    placeholder="Goku"
                     value={filters.name}
                     onChange={onInputChange}
                 />
 
                 {/* Rango de KI */}
-                <label htmlFor="kiMin">Search by Ki</label>
+                <label className="searchForm__label" htmlFor="kiMin">Search by Ki</label>
 
                 <select
                     id="kiMin"
@@ -71,7 +71,7 @@ function SearchForm({ filters, onInputChange, onSearch }) {
                 </select>
 
                 <button type="submit" className="searchForm__button">
-                    Buscar
+                    Search
                 </button>
             </div>
         </form>

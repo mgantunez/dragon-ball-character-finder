@@ -1,0 +1,55 @@
+.searchForm {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    &__title {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #222;
+    }
+
+    &__fields {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    &__input,
+    &__select {
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline-offset: 2px;
+
+        &:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 4px #007bff;
+        }
+    }
+
+    &__button {
+        margin-top: 1rem;
+        padding: 0.75rem;
+        font-size: 1.1rem;
+        background-color: #fcbc24;
+        color: #222;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.25s ease;
+
+        &:hover {
+            background-color: #d1a81b;
+        }
+    }
+
+    &__label {
+        margin-bottom: -1rem;
+    }
+}
